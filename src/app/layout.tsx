@@ -6,7 +6,7 @@ import { inter, poppins } from '@/config/google-fonts';
 export const metadata: Metadata = {
   title: {
     template: `%s | ${process.env.NEXT_PUBLIC_APP_NAME}`,
-    default: process.env.NEXT_PUBLIC_APP_NAME || 'Default',
+    default: process.env.NEXT_PUBLIC_APP_NAME || 'ISP',
   },
   description: process.env.NEXT_PUBLIC_APP_DESCRIPTION,
   icons: {
