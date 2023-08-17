@@ -38,18 +38,18 @@ export function useTransactionForm() {
   };
 
   const updateTransactionDate = (value: Date | null) => {
+    let newDate = value;
+
     if (value) {
       const now = dayjs();
-      if (now.isBefore(value)) setTransactionDate(now.toDate());
+      if (now.isBefore(value)) newDate = now.toDate();
       else if (cashbox && cashbox.openBox) {
         const openBox = dayjs(cashbox.openBox);
-        if (openBox.isValid() && openBox.isAfter(value)) setTransactionDate(openBox.toDate());
-        else setTransactionDate(value);
+        if (openBox.isValid() && openBox.isAfter(value)) newDate = openBox.toDate();
       }
-      return;
     }
 
-    setTransactionDate(value);
+    setTransactionDate(newDate);
   };
 
   const updateForm = (value: boolean | string, propertyName: TransactionPropertyEnum) => {
