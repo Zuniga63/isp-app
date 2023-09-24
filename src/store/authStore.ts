@@ -1,7 +1,5 @@
+import { clearAuthToken, saveAuthToken } from '@/logic/auth-logic';
 import { IUser } from '@/types';
-import { buildCookieOption } from '@/utils';
-import axios from 'axios';
-import { setCookie } from 'cookies-next';
 import { shallow } from 'zustand/shallow';
 import { createWithEqualityFn } from 'zustand/traditional';
 
@@ -21,13 +19,11 @@ export const useLoginStore = createWithEqualityFn<IAuthState>(
 );
 
 export const saveCredentials = ({ user, token }: { user: IUser; token: string }) => {
-  setCookie('access_token', token, buildCookieOption(30));
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  saveAuthToken(token);
   return useLoginStore.setState(() => ({ user, isAuth: true, isAdmin: user.isAdmin }));
 };
 
 export const clearCredentials = () => {
-  setCookie('access_token', '', buildCookieOption(0));
-  axios.defaults.headers.common.Authorization = '';
+  clearAuthToken();
   return useLoginStore.setState(() => ({ user: undefined, isAuth: false, isAdmin: false }));
 };
