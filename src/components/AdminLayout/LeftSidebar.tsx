@@ -9,7 +9,7 @@ export default function LeftSidebar() {
 
   return (
     <aside
-      className={`sticky top-header hidden h-without-header flex-shrink-0 transition-[width] lg:block ${
+      className={`sticky top-header hidden h-without-header flex-shrink-0 bg-blue-50 shadow shadow-blue-400 transition-[width] lg:block ${
         collapsed ? 'w-0' : 'w-60'
       }`}
     >

@@ -4,7 +4,7 @@ import Burger from './Burger';
 
 export function AdminHeader() {
   return (
-    <header className="sticky top-0 z-fixed flex h-header items-center bg-light px-4 py-2 shadow-lg lg:px-6">
+    <header className="sticky top-0 z-fixed flex h-header items-center bg-blue-100 px-4 py-2 shadow-lg lg:px-6">
       <div className="flex flex-grow items-center justify-between gap-x-4">
         {/* BURGER AND LOGO */}
         <div className="flex items-center gap-x-2">
