@@ -14,7 +14,7 @@ import {
 } from '@/services/boxes.service';
 import { IBox, ICashboxFull, ITransaction } from '@/types';
 import { currencyFormat } from '@/utils';
-import { ServerStateKeysEnum } from '@/utils/server-state-key.enum';
+import { ServerStateKeysEnum } from '@/config/server-state-key.enum';
 import { useToast } from '@chakra-ui/react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';

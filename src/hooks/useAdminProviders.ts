@@ -1,4 +1,4 @@
-import { setAuthTokens } from '@/logic/set-auth-token';
+import { getTokenFromCookies, setAuthTokens } from '@/logic/auth-logic';
 import { useSidebarMenuStore } from '@/store/sidebarStore';
 import { useMediaQuery } from '@chakra-ui/react';
 import { useEffect } from 'react';
@@ -15,7 +15,8 @@ export function useAdminProviders() {
   });
 
   useEffect(() => {
-    setAuthTokens();
+    const token = getTokenFromCookies();
+    setAuthTokens(token);
   }, []);
 
   useEffect(() => {
