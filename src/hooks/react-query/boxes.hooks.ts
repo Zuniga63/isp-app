@@ -18,11 +18,14 @@ import { ServerStateKeysEnum } from '@/config/server-state-key.enum';
 import { useToast } from '@chakra-ui/react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
+import { useAuthStore } from '@/store/authStore';
 
 export function useGetMinorBoxes() {
+  const isAuth = useAuthStore(state => state.isAuth);
   return useQuery({
     queryKey: [ServerStateKeysEnum.MinorBoxes],
     queryFn: getMinorBoxes,
+    enabled: isAuth,
   });
 }
 

@@ -8,11 +8,12 @@ type Props = {
   url?: string;
   icon?: React.ReactNode;
   className?: string;
+  isEnabled?: boolean;
 };
 
-export default function MenuLink({ name, icon, url = '', className }: Props) {
+export default function MenuLink({ name, icon, url = '', className, isEnabled }: Props) {
   const pathName = usePathname();
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(pathName.includes(url));
   const hide = useSidebarMenuStore(state => state.hide);
 
   useEffect(() => {
@@ -25,10 +26,11 @@ export default function MenuLink({ name, icon, url = '', className }: Props) {
 
   return (
     <Link
-      href={url}
-      className={`mt-2 block rounded-lg px-4 py-2 text-dark transition-colors hover:bg-green-300 hover:bg-opacity-30 ${className} ${
-        isActive && 'bg-green-300 bg-opacity-30 font-bold text-green-700'
-      }`}
+      href={isEnabled ? url : '#'}
+      className={`block rounded-lg px-4 py-2 text-dark transition-colors hover:bg-blue-300 hover:bg-opacity-30  
+    ${isActive && 'bg-blue-300 bg-opacity-30 font-bold text-blue-700'} 
+    ${!isEnabled && 'cursor-not-allowed opacity-40'}
+    ${className}`}
       onClick={hide}
     >
       <div className="flex items-center justify-between gap-4">

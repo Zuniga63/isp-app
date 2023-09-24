@@ -3,15 +3,23 @@ import MenuLinkGroup from './MenuLinkGroup';
 import { links } from '@/config/links';
 
 export default function MenuLinks() {
-  return links.map(({ url, name, Icon, links }) => {
+  return links.map(({ url, name, Icon, links, isEnabled }) => {
     if (!links)
-      return <MenuLink key={url} name={name} url={url} icon={Icon && <Icon className="text-zinc-600" size={24} />} />;
+      return (
+        <MenuLink
+          key={url}
+          name={name}
+          url={url}
+          icon={Icon && <Icon className="text-zinc-600" size={24} />}
+          isEnabled={isEnabled}
+        />
+      );
 
     return (
       <MenuLinkGroup
         key={url}
         title={name}
-        rootUrl={url}
+        sublinks={links.map(({ url }) => url)}
         leftIcon={Icon && <Icon className="text-zinc-600" size={24} />}
       >
         {links.map(subLink => (
@@ -21,6 +29,7 @@ export default function MenuLinks() {
             url={subLink.url}
             icon={subLink.Icon && <subLink.Icon className="text-zinc-600" size={24} />}
             className="pl-4"
+            isEnabled={subLink.isEnabled}
           />
         ))}
       </MenuLinkGroup>
