@@ -33,7 +33,7 @@ export default function GlobalBoxInfo() {
   if (!isOpen) return null;
   return (
     <Skeleton isLoaded={!isLoading} fadeDuration={1} className="mt-4 flex-grow lg:mt-0">
-      <Tabs defaultIndex={1}>
+      <Tabs defaultIndex={0}>
         <TabList>
           <Tab>Transacciones</Tab>
           <Tab>Resumen</Tab>
