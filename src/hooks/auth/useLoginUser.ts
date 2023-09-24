@@ -51,7 +51,6 @@ export function useLoginUser() {
   };
 
   const updateEmail = (value: string) => {
-    if (!value) return;
     setEmail(value.trim());
   };
 
