@@ -1,4 +1,4 @@
-import { AuthResponse, SigninData, UpdatePasswordRequest } from '@/types';
+import { IUser, type AuthResponse, type SigninData, type UpdatePasswordRequest } from '@/types';
 import axios from 'axios';
 
 export const authApi = axios.create({ baseURL: `${process.env.NEXT_PUBLIC_URL_API}/auth/local` });
@@ -12,3 +12,8 @@ export const updateUserPassword = async (data: UpdatePasswordRequest) => {
   const res = await authApi.patch('/profile/change-password', data);
   return res.data;
 };
+
+export async function authenticateToken() {
+  const res = await authApi.get<IUser>('/profile');
+  return res.data;
+}
