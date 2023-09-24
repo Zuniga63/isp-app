@@ -7,7 +7,6 @@ import { updateCredentials } from '@/store/authStore';
 
 export function useAdminProviders() {
   const opened = useSidebarMenuStore(state => state.opened);
-  const updateHeaderHeight = useSidebarMenuStore(state => state.updateHeaderHeight);
   const hide = useSidebarMenuStore(state => state.hide);
   const updateIsLargeScreen = useSidebarMenuStore(state => state.updateIsLargeScreen);
   const { mutate: authToken, data: userData, isSuccess: authIsSuccess } = useAuthAccesToken();
@@ -28,13 +27,6 @@ export function useAdminProviders() {
     updateIsLargeScreen(isLargeScreen);
     if (isLargeScreen && opened) hide();
   }, [isLargeScreen, opened]);
-
-  useEffect(() => {
-    const header = document.getElementById('admin-layout-header');
-    if (header) {
-      updateHeaderHeight(header.offsetHeight);
-    }
-  }, [isLargeScreen]);
 
   useEffect(() => {
     if (!authIsSuccess || !userData) return;

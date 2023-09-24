@@ -32,6 +32,10 @@ module.exports = {
       backgroundImage: {
         login: 'url(/images/bg-login.jpg)',
       },
+      spacing: {
+        header: 'var(--header-height)',
+        'without-header': 'calc(100vh - var(--header-height))',
+      },
     },
   },
   plugins: ['prettier'],

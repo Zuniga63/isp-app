@@ -7,18 +7,18 @@ type Props = {
   title: string;
   children: ReactNode;
   leftIcon?: ReactNode;
-  rootUrl: string;
+  sublinks: string[];
 };
 
-export default function MenuLinkGroup({ title, children, leftIcon, rootUrl }: Props) {
-  const { isOpen, isActive, onToggle } = useMenuLinkGroup({ url: rootUrl });
+export default function MenuLinkGroup({ title, children, leftIcon, sublinks }: Props) {
+  const { isOpen, isActive, onToggle } = useMenuLinkGroup({ sublinks });
 
   return (
     <>
       <button onClick={onToggle} className="w-full">
         <div
-          className={`flex items-center justify-between rounded-lg py-3 pl-4 pr-2 pt-2 transition-colors hover:bg-zinc-200 ${
-            isActive && 'bg-neutral-200'
+          className={`flex items-center justify-between rounded-lg py-3 pl-4 pr-2 pt-2 transition-colors hover:bg-blue-400 ${
+            isActive && 'bg-blue-200'
           }`}
         >
           <div className="flex items-center gap-4">
