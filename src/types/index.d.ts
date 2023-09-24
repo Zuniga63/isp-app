@@ -35,3 +35,4 @@ export type ErrorResponse = Pick<AxiosResponse, 'data' | 'status'>;
 
 export * from './auth';
 export * from './boxes';
+export * from './statistics';

@@ -1,5 +1,6 @@
 import { authApi } from '@/services/auth.service';
 import { boxesApi } from '@/services/boxes.service';
+import { statisticsApi } from '@/services/statistics.service';
 import axios from 'axios';
 import { getCookie, setCookie } from 'cookies-next';
 
@@ -28,7 +29,7 @@ export function createCookieOptions(duration = 1) {
  */
 export function setAuthTokens(token?: string) {
   const authorization = token ? `Bearer ${token}` : token;
-  const axiosInstances = [axios, authApi, boxesApi];
+  const axiosInstances = [axios, authApi, boxesApi, statisticsApi];
 
   axiosInstances.forEach(instance => {
     instance.defaults.headers.common.Authorization = authorization;
