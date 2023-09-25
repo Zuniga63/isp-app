@@ -1,16 +1,16 @@
 import { Metadata } from 'next';
-import BoxList from './_components/BoxList';
 import BoxesContainer from './_components/BoxesContainer';
 import CashboxForm from './_components/CashboxForm';
 import DeleteDialog from './_components/DeleteDialog';
 import OpenBoxForm from './_components/OpenBoxForm';
 import CloseBoxForm from './_components/CloseBoxForm';
-import MinorBoxInfo from './_components/MinorBoxInfo';
 import DeleteTransactionDialog from './_components/DeleteTransactionDialog';
 import TransactionForm from './_components/TransactionForm';
 import CashTransferForm from './_components/CashTransferForm';
 import GlobalBoxInfo from './_components/GlobalBoxInfo';
-import BoxSum from './_components/BoxSum';
+import AuxiliarBoxes from './_components/auxiliar-boxes';
+import BoxesTabPanel from './_components/boxes-tab-panel';
+import CashFlowTable from './_components/CashFlowTable';
 
 export const metadata: Metadata = {
   title: 'Cajas',
@@ -18,11 +18,20 @@ export const metadata: Metadata = {
 
 export default function BoxesPage() {
   return (
-    <BoxesContainer>
-      <BoxList />
-      <MinorBoxInfo />
-      <GlobalBoxInfo />
-      <BoxSum />
+    <>
+      <BoxesContainer>
+        <BoxesTabPanel>
+          <AuxiliarBoxes />
+        </BoxesTabPanel>
+
+        <BoxesTabPanel>
+          <GlobalBoxInfo />
+        </BoxesTabPanel>
+
+        <BoxesTabPanel>
+          <CashFlowTable />
+        </BoxesTabPanel>
+      </BoxesContainer>
 
       <CashboxForm />
       <DeleteDialog />
@@ -31,6 +40,6 @@ export default function BoxesPage() {
       <DeleteTransactionDialog />
       <TransactionForm />
       <CashTransferForm />
-    </BoxesContainer>
+    </>
   );
 }

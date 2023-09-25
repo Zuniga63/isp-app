@@ -11,7 +11,7 @@ type Props = {
 
 export default function TransactionTable({ transactions, isGlobalBox }: Props) {
   return (
-    <div className="3xl:h-[40rem] relative h-[55vh] overflow-y-auto">
+    <div className="relative h-full flex-grow overflow-y-auto">
       <TableContainer position="absolute" inset="0" height="full" width="100%" overflowY="auto">
         <Table variant="striped" className="table-auto" size="sm" width="full">
           <Thead className="sticky top-0 z-50 bg-light">
