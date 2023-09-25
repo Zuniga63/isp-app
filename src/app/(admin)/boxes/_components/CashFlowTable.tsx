@@ -8,8 +8,8 @@ import React from 'react';
 export default function CashFlowTable() {
   const { data } = useGetCashFlowReports();
   return (
-    <div className="3xl:h-[40rem] relative h-[70vh] overflow-y-auto bg-white">
-      <TableContainer position="absolute" inset="0" height="full" width="100%" overflowY="auto">
+    <div className="relative h-full overflow-y-auto bg-white">
+      <TableContainer position="absolute" width="100%" overflowY="auto" className="inset-x-0 inset-y-2">
         <Table variant="striped" className="table-auto" size="sm" width="full">
           <Thead className="sticky top-0 z-50 bg-light">
             <Tr className="h-12">

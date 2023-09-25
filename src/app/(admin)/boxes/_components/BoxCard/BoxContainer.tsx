@@ -6,11 +6,5 @@ type Props = {
 };
 
 export default function Container({ isOpen, children }: Props) {
-  return (
-    <div
-      className={`group overflow-hidden rounded-b rounded-t-lg border text-dark shadow-sm ${!isOpen && 'opacity-80'}`}
-    >
-      {children}
-    </div>
-  );
+  return <div className={`group overflow-hidden text-dark shadow-sm ${!isOpen && 'opacity-80'}`}>{children}</div>;
 }

@@ -1,21 +1,18 @@
 :root {
   --header-height: 4rem;
+  scroll-behavior: smooth;
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  scroll-behavior: smooth;
-}
-
 ::-webkit-scrollbar {
   @apply w-1 lg:w-2;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-slate-50;
+  @apply bg-transparent transition-colors hover:bg-slate-50 hover:transition-colors;
 }
 
 ::-webkit-scrollbar-thumb {

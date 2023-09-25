@@ -34,7 +34,11 @@ export default function Header({ boxName, isOpen, boxId }: Props) {
   };
 
   return (
-    <header className={`flex items-center gap-x-2 bg-gray-200 px-4 py-2`}>
+    <header
+      className={`flex items-center gap-x-2 rounded-t-md bg-zinc-400 px-4 py-2 transition-colors group-hover:bg-blue-400 ${
+        isSelected ? 'bg-emerald-400' : 'bg-zinc-400'
+      }`}
+    >
       <div className="flex-grow">
         <div className="flex items-center gap-x-1">
           {isSelected && <IconFolderOpen size={16} className="text-yellow-500" />}

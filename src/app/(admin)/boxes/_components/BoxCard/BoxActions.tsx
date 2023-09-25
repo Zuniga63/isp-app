@@ -2,6 +2,7 @@
 import { useCashboxesStore } from '@/store/cashboxesStore';
 import { Button } from '@chakra-ui/react';
 import { IconFolder, IconLockOpen } from '@tabler/icons-react';
+import { useMemo } from 'react';
 
 type Props = {
   isOpen?: boolean;
@@ -14,13 +15,23 @@ export default function Actions({ isOpen, cashboxId }: Props) {
   const mountBoxToOpen = useCashboxesStore(state => state.mountBoxToOpen);
   const handleShowBoxInfo = () => mountBoxToShow(cashboxId);
 
+  const boxIdSelected = useCashboxesStore(state => state.cashboxIdToShow);
+
+  const isSelected = useMemo(() => {
+    return cashboxId === boxIdSelected;
+  }, [boxIdSelected]);
+
   const mountBoxToShow = useCashboxesStore(state => state.mountBoxToShow);
   const handleOpenBox = () => mountBoxToOpen(cashboxId);
 
   const isLoading = cashboxId === loadigInfo;
 
   return (
-    <footer className={`grid grid-cols-2 gap-x-2 bg-gray-200 px-4 py-2 ${!isOpen && 'bg-opacity-50'}`}>
+    <footer
+      className={`grid grid-cols-2 gap-x-2 rounded-b transition-colors group-hover:bg-blue-200 ${
+        isSelected ? 'bg-emerald-200' : 'bg-zinc-200'
+      } px-4 py-2 ${!isOpen && 'bg-opacity-50'}`}
+    >
       {isOpen ? (
         <Button
           colorScheme="blue"
