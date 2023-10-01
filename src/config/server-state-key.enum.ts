@@ -3,4 +3,5 @@ export enum ServerStateKeysEnum {
   MinorBox = 'MinorBox',
   GlobalTransactions = 'GlobalTransactions',
   CashFlowReports = 'cash-flow-reports',
+  PaymentMethods = 'payment-methods',
 }
