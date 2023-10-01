@@ -31,6 +31,7 @@
     "react-datepicker": "4.18.0",
     "react-dom": "18.2.0",
     "sharp": "0.32.6",
+    "tailwind-merge": "1.14.0",
     "zustand": "4.4.1"
   },
   "devDependencies": {
