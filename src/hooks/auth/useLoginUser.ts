@@ -46,7 +46,6 @@ export function useLoginUser() {
   });
 
   const updatePassword = (value: string) => {
-    if (!value) return;
     setPassword(value);
   };
 
