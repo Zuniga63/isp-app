@@ -1,18 +1,19 @@
 'use client';
 
-import { Table, TableContainer, Tbody, Thead, Tr, Th } from '@chakra-ui/react';
+import { Table, TableContainer, Tbody, Thead, Tr, Th, PositionProps } from '@chakra-ui/react';
 import TransactionRow from './TransactionRow';
 import { ITransaction } from '@/types';
 
 type Props = {
   transactions?: ITransaction[];
   isGlobalBox?: boolean;
+  tablePosition?: PositionProps['position'];
 };
 
-export default function TransactionTable({ transactions, isGlobalBox }: Props) {
+export default function TransactionTable({ transactions, isGlobalBox, tablePosition = 'absolute' }: Props) {
   return (
-    <div className="relative h-full flex-grow overflow-y-auto">
-      <TableContainer position="absolute" inset="0" height="full" width="100%" overflowY="auto">
+    <div className={`relative flex-grow overflow-y-auto ${tablePosition === 'absolute' ? 'h-full' : 'h-auto'}`}>
+      <TableContainer position={tablePosition} inset="0" height="full" width="100%" overflowY="auto">
         <Table variant="striped" className="table-auto" size="sm" width="full">
           <Thead className="sticky top-0 z-50 bg-light">
             <Tr className="h-12">
