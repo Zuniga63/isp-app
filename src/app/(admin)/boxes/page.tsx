@@ -11,6 +11,7 @@ import GlobalBoxInfo from './_components/GlobalBoxInfo';
 import AuxiliarBoxes from './_components/auxiliar-boxes';
 import BoxesTabPanel from './_components/boxes-tab-panel';
 import CashFlowTable from './_components/CashFlowTable';
+import PrinterResumeModal from './_components/PrinterResumeModal';
 
 export const metadata: Metadata = {
   title: 'Cajas',
@@ -40,6 +41,7 @@ export default function BoxesPage() {
       <DeleteTransactionDialog />
       <TransactionForm />
       <CashTransferForm />
+      <PrinterResumeModal />
     </>
   );
 }

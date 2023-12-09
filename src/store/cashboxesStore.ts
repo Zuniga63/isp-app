@@ -16,6 +16,7 @@ interface ICashboxesState {
   transactionFormOpened: boolean;
   transactionToEdit?: ITransaction;
   cashTransferFormOpened: boolean;
+  printResumeIsOpen: boolean;
 }
 
 interface ICashboxesActions {
@@ -40,6 +41,8 @@ interface ICashboxesActions {
   hideGlobalBox: () => void;
   addBoxToSum: (id: string) => void;
   removeBoxToSum: (id: string) => void;
+  showPrintResume: () => void;
+  hidePrintResume: () => void;
   reset: () => void;
 }
 
@@ -51,6 +54,7 @@ export const useCashboxesStore = createWithEqualityFn<ICashboxesState & ICashbox
     cashboxIdToDelete: undefined,
     transactionFormOpened: false,
     cashTransferFormOpened: false,
+    printResumeIsOpen: false,
     sumBoxesId: [],
     // --------------------------------------------------------------------------
     // CREATE AND UPDATE ACTIONS
@@ -136,6 +140,12 @@ export const useCashboxesStore = createWithEqualityFn<ICashboxesState & ICashbox
         ids.splice(exits, 1);
         set(() => ({ sumBoxesId: ids }));
       }
+    },
+    showPrintResume() {
+      set(() => ({ printResumeIsOpen: true }));
+    },
+    hidePrintResume() {
+      set(() => ({ printResumeIsOpen: false }));
     },
     reset() {
       set(() => ({

@@ -50,7 +50,7 @@ export default function TransactionRow({ transaction, isGlobalBox = false }: Pro
         {currencyFormat(transaction.amount)}
       </Td>
       <Td
-        className={`hidden  text-right text-sm font-bold lg:table-cell 
+        className={`hidden  text-right text-sm font-bold sm:table-cell 
         ${balanceGTZero ? 'text-emerald-500' : 'text-red-500'}`}
         padding={2}
       >

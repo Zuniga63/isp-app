@@ -2,7 +2,7 @@
 
 import { useCashboxesStore } from '@/store/cashboxesStore';
 import { Button, Skeleton } from '@chakra-ui/react';
-import { IconCirclePlus } from '@tabler/icons-react';
+import { IconCirclePlus, IconPrinter } from '@tabler/icons-react';
 import { useMemo, useState } from 'react';
 import { useTransactions } from '../_hooks/useTransactions';
 import Pagination from '@/components/Pagination';
@@ -14,6 +14,7 @@ import { useGetGlobalTransactions } from '@/hooks/react-query/boxes.hooks';
 export default function GlobalBoxInfo() {
   const isOpen = useCashboxesStore(state => state.isGlobal);
   const showTransactionForm = useCashboxesStore(state => state.showTransactionForm);
+  const showPrintResume = useCashboxesStore(state => state.showPrintResume);
 
   const [search, setSearch] = useState<string | undefined>('');
   const { data, isLoading } = useGetGlobalTransactions({ enabled: isOpen });
@@ -44,6 +45,16 @@ export default function GlobalBoxInfo() {
               onClick={() => showTransactionForm()}
             >
               Registrar Transacción
+            </Button>
+
+            <Button
+              colorScheme="green"
+              size="xs"
+              flexShrink={0}
+              leftIcon={<IconPrinter size={14} />}
+              onClick={showPrintResume}
+            >
+              Imprimir Resumen
             </Button>
           </div>
 
