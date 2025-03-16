@@ -5,6 +5,7 @@ import { useCashboxesStore } from '@/store/cashboxesStore';
 import { MONTHS } from '@/utils';
 import {
   Button,
+  Checkbox,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -30,6 +31,7 @@ export default function PrinterResumeModal() {
   const printRef = useRef<HTMLDivElement | null>(null);
   const promiseResolveRef = useRef<unknown>(null);
   const [isPrinting, setIsPrinting] = useState(false);
+  const [showOnlyBoxTransactions, setShowOnlyBoxTransactions] = useState(false);
 
   const hadnelClose = () => {
     if (isPrinting) return;
@@ -66,12 +68,21 @@ export default function PrinterResumeModal() {
     const from = dayjs(`${yearValue}-${monthValue + 1}-1`).startOf('month');
     const to = from.endOf('month');
 
-    return data.filter(({ transactionDate }) => {
+    const filteredTransactions = data.filter(({ transactionDate }) => {
       const isBefore = dayjs(transactionDate).isBefore(from);
       const isAfter = dayjs(transactionDate).isAfter(to);
 
       return !isBefore && !isAfter;
     });
+
+    let accumulated = 0;
+
+    filteredTransactions.forEach(transaction => {
+      accumulated += transaction.amount;
+      transaction.accumulated = accumulated;
+    });
+
+    return filteredTransactions;
   }, [year, month, data]);
 
   return (
@@ -86,6 +97,7 @@ export default function PrinterResumeModal() {
             <div className="flex-grow">
               <div className="grid grid-cols-3 gap-x-4">
                 <Select placeholder="Selecciona un año" value={year} onChange={e => setYear(e.currentTarget.value)}>
+                  <option>2025</option>
                   <option>2024</option>
                   <option>2023</option>
                   <option>2022</option>
@@ -97,6 +109,14 @@ export default function PrinterResumeModal() {
                     </option>
                   ))}
                 </Select>
+              </div>
+              <div className="mt-4 flex gap-x-2">
+                <Checkbox
+                  isChecked={showOnlyBoxTransactions}
+                  onChange={e => setShowOnlyBoxTransactions(e.currentTarget.checked)}
+                >
+                  Mostrar solo transacciones de caja
+                </Checkbox>
               </div>
             </div>
 
@@ -117,9 +137,11 @@ export default function PrinterResumeModal() {
                   ) : null}
                 </div>
 
-                <div className="relative h-[600px]">
-                  <CashFlowTable />
-                </div>
+                {showOnlyBoxTransactions ? null : (
+                  <div className="relative h-[600px]">
+                    <CashFlowTable />
+                  </div>
+                )}
               </div>
             </div>
           </div>

@@ -30,6 +30,7 @@ export interface ITransaction {
   isTransfer: string;
   amount: number;
   balance: number;
+  accumulated: number;
   createdAt: strig; // string Date
   updatedAt: string; // string Date
 }

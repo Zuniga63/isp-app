@@ -23,6 +23,9 @@ export default function TransactionTable({ transactions, isGlobalBox, tablePosit
                 Importe
               </Th>
               <Th scope="col" textAlign="center">
+                Sumatoria
+              </Th>
+              <Th scope="col" textAlign="center">
                 Saldo
               </Th>
               <Th scope="col" className="relative">

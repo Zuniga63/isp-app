@@ -49,6 +49,15 @@ export default function TransactionRow({ transaction, isGlobalBox = false }: Pro
       <Td className={`text-right ${isExpensive ? 'text-red-500' : 'text-emerald-500'}`} padding={2}>
         {currencyFormat(transaction.amount)}
       </Td>
+
+      <Td
+        className={`hidden  text-right text-sm font-bold sm:table-cell 
+        ${transaction.accumulated > 0 ? 'text-emerald-500' : 'text-red-500'}`}
+        padding={2}
+      >
+        {currencyFormat(transaction.accumulated)}
+      </Td>
+
       <Td
         className={`hidden  text-right text-sm font-bold sm:table-cell 
         ${balanceGTZero ? 'text-emerald-500' : 'text-red-500'}`}
