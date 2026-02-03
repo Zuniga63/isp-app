@@ -97,6 +97,7 @@ export default function PrinterResumeModal() {
             <div className="flex-grow">
               <div className="grid grid-cols-3 gap-x-4">
                 <Select placeholder="Selecciona un año" value={year} onChange={e => setYear(e.currentTarget.value)}>
+                  <option>2026</option>
                   <option>2025</option>
                   <option>2024</option>
                   <option>2023</option>
